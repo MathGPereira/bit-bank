@@ -1,0 +1,24 @@
+{
+  "name": "bit-bank",
+  "version": "1.0.0",
+  "description": "Um projeto feito para gerenciar dados bancários, sendo utilizado o SGBDR MySQL",
+  "keywords": [
+    "sequelize",
+    "express",
+    "mysql"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MathGPereira/bit-bank"
+  },
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matheus G. Pereira <matheusgp.mto@outlook.com>",
+  "contributors": [
+    "Matheus G. Pereira <matheusgp.mto@outlook.com>"
+  ],
+  "license": "ISC"
+}
