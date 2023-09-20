@@ -21,6 +21,8 @@ Aqui irão as imagens do projeto e correlatos
 	* [Regras de negócio](#business-rules)
 		* [Cheque especial](#overdraft)
 		* [Abertura de conta](#account-oppening)
+		* [Validações](#validations)
+		* [Impostos](#tax)
 4. [Modelo de dados](#data-model)
 	* [Modelo conceitual](#conceptual-model)
 	* [Modelo lógico](#logical-model)
@@ -67,14 +69,15 @@ Em fim, isso e muitas outras melhorias no desenvolvimento e no produto final ser
 <a id="specific-objectives"></a>
 ## Objetivos específicos
 1. Desenvolver minhas habilidades de planejamento dos processos de desenvolvimento de softwares
-2. Aprender a trabalhar com ferramentas como Kanbam e, até certo ponto, com os conceitos do Scrum
+2. Aprender a trabalhar com ferramentas como Kanbam e, até certo ponto, com os conceitos do Scrum e de prototipagem
 3. Entender na prática todo o processo de modelagem de dados, indo desde a modelagem conceitual (MER e DER), passando pelo modelo lógico até o modelo físico onde serão concretizados a criação de todas as tabelas do banco
 4. Melhorar e entender melhor o meu processo criativo para a criação da paleta de cores, tipografia, logo e distribuição de conteúdos e prototipação de layout com wireframes
 5. Adquirir maior pensamento crítico na hora de criar e planejar o modelo de navegação do usuário dentro do software
 6. Aprender a utilizar novas ferramentas, como o Sequelize e a sua integração com o MySQL e o mysql2 para criação de querys SQL
 7. Aprender a criar documentação com o Swagger para a API feita com o Express
 8. Melhorar meus padrões de commit de código para maior organização e entendimento das diferentes versões do software
-9. Desenvolver maior habilidade com manipulação de criptografia de dados e LGPD
+9. Desenvolver maior habilidade com manipulação de criptografia de dados, LGPD e Lei Brasileira de Inclusão da Pessoa com Deficiência (LBIPD)
+10. Aprender a integrar o plugin VLibre ao software
 
 <a id="project-requirements"></a>
 # Requisitos
@@ -91,7 +94,7 @@ Em fim, isso e muitas outras melhorias no desenvolvimento e no produto final ser
 5. Deve ser possível criar QrCodes para realizar cobranças
 6. Deve ser possível criar relatórios do histórico de todas as transações do usuário, com filtros de data inicial e data final
 7. O usuário pode escolher fechar a sua conta bancária
-8. O BitBank irá fechar toda conta inativa por mais de 4 meses
+8. O BitBank irá fechar toda conta inativa por mais de 1 mes
 9. O usuário deve poder realizar consultas no seu saldo bancário e em todos os dados da sua conta
 
 <a id="non-functional-requirements"></a>
@@ -128,6 +131,8 @@ Em fim, isso e muitas outras melhorias no desenvolvimento e no produto final ser
 	![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)
 	![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 	![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+	![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+	![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
 
 2. Pretende-se, futuramente, migrar o software para as seguintes tecnologias:
 
@@ -138,6 +143,8 @@ Em fim, isso e muitas outras melhorias no desenvolvimento e no produto final ser
 	![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 	![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 	![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+	![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+	![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
 
 <a id="standard-requirements"></a>
 ### Requisitos de padrão
@@ -170,6 +177,7 @@ O software irá se comunicar com
 	* Comprovante de renda
 	* Uma ou mais contas bancárias
 	* Sexo
+	* Foto de perfil do usuário
 2. Toda conta bancária deve possuir:
 	* Número de conta único e exclusivo
 	* Agência
@@ -196,6 +204,21 @@ O software irá se comunicar com
 ### Abertura de conta
 1. Para que a abertura de conta seja permitida, é necessário que o usuário tenha seu CPF totalmente regularizado, ou seja, sem pendências no Serasa e afins
 2. O usuário precisa ter no mínimo 18 anos para abrir uma conta bancária
+
+<a id="validations"></a>
+### Validações
+1. A validação de usuário para login deve ser feita em duas etapas. As opções de validação são:
+	* O usuário pode validar seu login com sua senha e com um e-mail enviado de forma automática com um código de segurança de 8 caracteres aleatórios
+	* O usuário pode validar seu login com sua senha e uma imagem de perfil
+	* Com sua senha e um SMS enviado para o número de telefone cadastrado com um código de segurança de 8 caracteres aleatórios
+2. Toda senha precisa ter, no mínimo, 14 caracteres que contenham:
+	* No mínimo uma letra maiúscula
+	* No mínimo uma letra minúscula
+	* No mínimo um caractere especial
+	* No mínimo um dígito numérico
+	* Não podem haver dígitos numéricos sequenciais, tais como 12 ou 45
+3. Para criação de conta, é obrigatório que o usuário tire uma foto do seu rosto para futuras validações e maior segurança
+4. Todas as transações efetuadas são instantaneamente debitadas, sem a opção, inicialmente, de movimentações no crédito e afins
 
 <a id="data-model"></a>
 # Modelo de dados
