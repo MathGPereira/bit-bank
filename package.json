@@ -20,5 +20,8 @@
   "contributors": [
     "Matheus G. Pereira <matheusgp.mto@outlook.com>"
   ],
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.49.0"
+  }
 }
