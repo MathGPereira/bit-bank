@@ -9,22 +9,33 @@ Aqui irão as imagens do projeto e correlatos
 	* [Objetivo geral](#general-objectives)
 	* [Objetivos específicos](#specific-objectives)
 3. [Requisitos](#project-requirements)
-4. [Tecnologias](#technologies)
-5. [Modelo de dados](#data-model)
+	* [Requisitos funcionais](#functional-requirements)
+	* [Requisitos não funcionais](#non-functional-requirements)
+		* [Requisitos de produto](#product-requirements)
+		* [Requisitos de organização](#legislation-requirements)
+		* [Requisitos de confiabilidade](#confiability-requirements)
+		* [Requisito de implementação](#implementation-requirements)
+		* [Requisito de padrões](#standard-requirements)
+		* [Requisitos de interoperabilidade](#interoperabiliy-requirements)
+	* [Banco de dados](#database)
+	* [Regras de negócio](#business-rules)
+		* [Cheque especial](#overdraft)
+		* [Abertura de conta](#account-oppening)
+4. [Modelo de dados](#data-model)
 	* [Modelo conceitual](#conceptual-model)
 	* [Modelo lógico](#logical-model)
 	* [Físico](#physical-model)
-6. [Design](#design)
+5. [Design](#design)
 	* [Paleta de cor](#color-palette)
 	* [Tipografia](#typography)
 	* [Logo](#logo)
 	* [Wireframe](#wireframe)
 	* [Modelo de navegação](#model-navigation)
-7. [Rotas da API](#api-routes)
+6. [Rotas da API](#api-routes)
 	* [Validações das rotas](#routes-validation)
-8. [Instalação](#instalation)
-9. [Contatos](#contact)
-10. [Problemas](#issues)
+7. [Instalação](#instalation)
+8. [Contatos](#contact)
+9. [Problemas](#issues)
 
 <a id="project-description"></a>
 # Descrição do projeto
@@ -44,6 +55,7 @@ Em fim, isso e muitas outras melhorias no desenvolvimento e no produto final ser
 ## Metodologias usadas
 * Kanbam
 * Scrum
+* Prototipagem
 
 <a id="project-objectives"></a>
 # Objetivos
@@ -58,23 +70,132 @@ Em fim, isso e muitas outras melhorias no desenvolvimento e no produto final ser
 2. Aprender a trabalhar com ferramentas como Kanbam e, até certo ponto, com os conceitos do Scrum
 3. Entender na prática todo o processo de modelagem de dados, indo desde a modelagem conceitual (MER e DER), passando pelo modelo lógico até o modelo físico onde serão concretizados a criação de todas as tabelas do banco
 4. Melhorar e entender melhor o meu processo criativo para a criação da paleta de cores, tipografia, logo e distribuição de conteúdos e prototipação de layout com wireframes
-5. Adquirir maior pensamento crítico na hora de modelar e planejar o modelo de navegação do usuário dentro do software
+5. Adquirir maior pensamento crítico na hora de criar e planejar o modelo de navegação do usuário dentro do software
 6. Aprender a utilizar novas ferramentas, como o Sequelize e a sua integração com o MySQL e o mysql2 para criação de querys SQL
 7. Aprender a criar documentação com o Swagger para a API feita com o Express
 8. Melhorar meus padrões de commit de código para maior organização e entendimento das diferentes versões do software
+9. Desenvolver maior habilidade com manipulação de criptografia de dados e LGPD
 
 <a id="project-requirements"></a>
 # Requisitos
 
-<a id="technologies"></a>
-# Tecnologias
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Sequelize](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
-![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
-![Git](https://img.shields.io/badge/Git-E34F26?style=for-the-badge&logo=git&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-E34F26?style=for-the-badge&logo=linux&logoColor=black)
+<a id="functional-requirements"></a>
+## Requisitos funcionais
+1. Cadastrar usuários para abrir conta
+2. Realizar login
+3. Efetuar mudanças dos dados pessoais da conta do usuário
+4. Deve ser possível realizar movimentações financeiras, como:
+	* Depósitos
+	* Saques
+	* Transferências entre contas distintas
+5. Deve ser possível criar QrCodes para realizar cobranças
+6. Deve ser possível criar relatórios do histórico de todas as transações do usuário, com filtros de data inicial e data final
+7. O usuário pode escolher fechar a sua conta bancária
+8. O BitBank irá fechar toda conta inativa por mais de 4 meses
+9. O usuário deve poder realizar consultas no seu saldo bancário e em todos os dados da sua conta
+
+<a id="non-functional-requirements"></a>
+## Requisitos não funcionais
+
+<a id="product-requirements"></a>
+### Requisitos de produto
+1. O software deve ser capaz de rodar em todas os sistemas operacionais através da web
+2. Deve haver compatibilidade entre a forma que o software roda nos diferentes browsers, sendo os principais:
+
+	![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white)
+	![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white)
+	![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)
+	![Safari](https://img.shields.io/badge/Safari-000000?style=for-the-badge&logo=Safari&logoColor=white)
+	![Opera](https://img.shields.io/badge/Opera-FF1B2D?style=for-the-badge&logo=Opera&logoColor=white)
+
+<a id="legislation-requirements"></a>
+### Requisitos de legislação
+1. Garantir integralmente todos os artigos do LGPD (Lei Geral de Proteção de Dados)
+2. Garantir acessibilidade do softwrae de acordo com a LBIPD (Lei Brasileira de Inclusão da Pessoa com Deficiência)
+
+<a id="confiability-requirements"></a>
+### Requisitos de confiabilidade
+1. O software deve estar em funcionamento 99% do tempo, com excessão de funcionalidade que:
+	* Usem ferramentas que necessitem de validação do CPF através da Receita Federal
+
+<a id="implementation-requirements"></a>
+### Requisitos de implementação
+1. O sofwtare deverá ser implementado com as seguintes tecnologias:
+
+	![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+	![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+	![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+	![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)
+	![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+	![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+
+2. Pretende-se, futuramente, migrar o software para as seguintes tecnologias:
+
+	![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
+	![RxJS](https://img.shields.io/badge/rxjs-%23B7178C.svg?style=for-the-badge&logo=reactivex&logoColor=white)
+	![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+	![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+	![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+	![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+	![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+
+<a id="standard-requirements"></a>
+### Requisitos de padrão
+Irão ser usados os seguintes padrões de código:
+
+1. Orientação a objeto
+2. [SOLID](https://www.treinaweb.com.br/blog/principios-solid-single-responsability-principle)
+3. [Clean Code](https://balta.io/artigos/clean-code)
+
+<a id="interoperabiliy-requirements"></a>
+### Requisitos de interoperabilidade
+O software irá se comunicar com
+
+1. MySQL
+2. API's externas, como: ViaCep, API da Receita Federal e API da Caixa Econômica
+	
+<a id="database"></a>
+## Banco de dados
+1. Todo usuário deve possuir:
+	* Nome completo formado por nome e sobrenome
+	* CPF único e exclusivo
+	* E-mail único e exclusivo
+	* Nacionalidade
+	* Data de nascimento
+	* Idade
+	* Um ou mais telefones do usuário formados por DDD e número
+	* Um telefone de contato alternativo que não seja do usuário
+	* Endereço formado por CEP, logradouro, complemento (que pode ou não existir), bairro, localidade e UF
+	* Estado civil
+	* Comprovante de renda
+	* Uma ou mais contas bancárias
+	* Sexo
+2. Toda conta bancária deve possuir:
+	* Número de conta único e exclusivo
+	* Agência
+	* Saldo
+	* Histórico de transações
+	* Cheque especial
+3. Toda transação deve ficar armazenada (formando um histórico de cada usuário) e conter as seguintes informações:
+	* Usuário que realizou a movimentação
+	* Usuário que recebeu a movimentação
+	* A data da movimentação
+	* O valor que foi movimentado
+	* O status da movimentação (permitida, bloqueada)
+
+<a id="business-rules"></a>
+## Regras de negócio
+
+<a id="overdraft"></a>
+### Cheque especial
+1. Para pessoas com renda abaixo de 1500, o cheque especial deve ser nulo
+2. Para pessoas com renda abaixo de 2500, o cheque especial deve ser de 35%
+3. Para pessoas com renda a cima de 2500, o cheque especial deve ser de 50%
+
+<a id="account-oppening"></a>
+### Abertura de conta
+1. Para que a abertura de conta seja permitida, é necessário que o usuário tenha seu CPF totalmente regularizado, ou seja, sem pendências no Serasa e afins
+2. O usuário precisa ter no mínimo 18 anos para abrir uma conta bancária
 
 <a id="data-model"></a>
 # Modelo de dados
