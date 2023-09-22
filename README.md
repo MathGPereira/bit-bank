@@ -22,11 +22,20 @@ Aqui irão as imagens do projeto e correlatos
 		* [Cheque especial](#overdraft)
 		* [Abertura de conta](#account-oppening)
 		* [Validações](#validations)
-		* [Impostos](#tax)
 4. [Modelo de dados](#data-model)
 	* [Modelo conceitual](#conceptual-model)
 	* [Modelo lógico](#logical-model)
-	* [Físico](#physical-model)
+		* [Primeiro modelo](#first-model)
+		* [Normalização](#normalization)
+			* [Primeira forma normal](#first-normal-form)
+			* [Segunda forma normal](#second-normal-form)
+			* [Terceira forma normal](#third-normal-form)
+			* [Forma normal de Boyce-Codd](#boyce-codd-normal-form)
+			* [Quarta forma normal](#forth-normal-form)
+			* [Quinta forma normal](#fifth-normal-form)
+		* [Modelo final](#final-model)
+		* [Dicionário de dados](#data-dictionary)
+	* [Modelo físico](#physical-model)
 5. [Design](#design)
 	* [Paleta de cor](#color-palette)
 	* [Tipografia](#typography)
@@ -105,11 +114,11 @@ Em fim, isso e muitas outras melhorias no desenvolvimento e no produto final ser
 1. O software deve ser capaz de rodar em todas os sistemas operacionais através da web
 2. Deve haver compatibilidade entre a forma que o software roda nos diferentes browsers, sendo os principais:
 
-	![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white)
-	![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white)
-	![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)
-	![Safari](https://img.shields.io/badge/Safari-000000?style=for-the-badge&logo=Safari&logoColor=white)
-	![Opera](https://img.shields.io/badge/Opera-FF1B2D?style=for-the-badge&logo=Opera&logoColor=white)
+	[![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white)](https://www.microsoft.com/pt-br/edge?form=MA13FJ)
+	[![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white)](https://www.mozilla.org/pt-BR/firefox/new/)
+	[![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)](https://www.google.com/chrome/)
+	[![Safari](https://img.shields.io/badge/Safari-000000?style=for-the-badge&logo=Safari&logoColor=white)](https://www.apple.com/br/safari/)
+	[![Opera](https://img.shields.io/badge/Opera-FF1B2D?style=for-the-badge&logo=Opera&logoColor=white)](https://www.opera.com/gx?utm_id=EAIaIQobChMItPmdnY6-gQMV9AutBh1DBAK-EAAYAiAAEgLDzPD_BwE&utm_medium=pa&utm_source=google&utm_campaign=OGX_BR_Search_EN_T4_Competitors_V2&utm_content=639990942371&gad=1&gclid=EAIaIQobChMItPmdnY6-gQMV9AutBh1DBAK-EAAYAiAAEgLDzPD_BwE)
 
 <a id="legislation-requirements"></a>
 ### Requisitos de legislação
@@ -125,26 +134,26 @@ Em fim, isso e muitas outras melhorias no desenvolvimento e no produto final ser
 ### Requisitos de implementação
 1. O sofwtare deverá ser implementado com as seguintes tecnologias:
 
-	![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-	![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-	![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-	![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)
-	![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-	![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
-	![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-	![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
+	[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+	[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+	[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://devdocs.io/javascript/)
+	[![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)](https://sequelize.org/)
+	[![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
+	[![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)](https://dev.mysql.com/doc/)
+	[![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/docs)
+	[![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)](https://nodemon.io/)
 
 2. Pretende-se, futuramente, migrar o software para as seguintes tecnologias:
 
-	![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
-	![RxJS](https://img.shields.io/badge/rxjs-%23B7178C.svg?style=for-the-badge&logo=reactivex&logoColor=white)
-	![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-	![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
-	![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
-	![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-	![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
-	![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-	![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
+	[![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)](https://angular.io/docs)
+	[![RxJS](https://img.shields.io/badge/rxjs-%23B7178C.svg?style=for-the-badge&logo=reactivex&logoColor=white)](https://rxjs.dev/guide/overview)
+	[![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/docs/)
+	[![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)](https://sass-lang.com/documentation/)
+	[![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)](https://www.prisma.io/docs)
+	[![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
+	[![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)](https://dev.mysql.com/doc/)
+	[![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/docs)
+	[![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)](https://nodemon.io/)
 
 <a id="standard-requirements"></a>
 ### Requisitos de padrão
@@ -162,7 +171,7 @@ O software irá se comunicar com
 2. API's externas, como: ViaCep, API da Receita Federal e API da Caixa Econômica
 	
 <a id="database"></a>
-## Banco de dados
+### Banco de dados
 1. Todo usuário deve possuir:
 	* Nome completo formado por nome e sobrenome
 	* CPF único e exclusivo
@@ -217,8 +226,12 @@ O software irá se comunicar com
 	* No mínimo um caractere especial
 	* No mínimo um dígito numérico
 	* Não podem haver dígitos numéricos sequenciais, tais como 12 ou 45
-3. Para criação de conta, é obrigatório que o usuário tire uma foto do seu rosto para futuras validações e maior segurança
-4. Todas as transações efetuadas são instantaneamente debitadas, sem a opção, inicialmente, de movimentações no crédito e afins
+3. Ainda com relação as senhas, temos que outras validações deverão ser feitas, tais como:
+	* A entropia de toda senha registrada deve ter, no mínimo, um valor de 92.4 bits
+	* Deve haver um dicionários de senhas vulneráveis
+	* Deste dicionário, deve-se verificar se a senha a ser cadastrada possui, parcial ou inteiramente, algum padrão registrado no dicionário de senhas
+4. Para criação de conta, é obrigatório que o usuário tire uma foto do seu rosto para futuras validações e maior segurança
+5. Todas as transações efetuadas são instantaneamente debitadas, sem a opção, inicialmente, de movimentações no crédito e afins
 
 <a id="data-model"></a>
 # Modelo de dados
@@ -228,6 +241,36 @@ O software irá se comunicar com
 
 <a id="logical-model"></a>
 ## Modelo lógico
+
+<a id="first-model"></a>
+### Primeiro modelo
+
+<a id="normalization"></a>
+### Normalização
+
+<a id="first-normal-form"></a>
+#### Primeira forma normal
+
+<a id="second-normal-form"></a>
+#### Segunda forma normal
+
+<a id="third-normal-form"></a>
+#### Terceira forma normal
+
+<a id="boyce-codd-normal-form"></a>
+#### Forma normal de Boyce-Codd
+
+<a id="forth-normal-form"></a>
+#### Quarta forma normal
+
+<a id="fifth-normal-form"></a>
+#### Quinta forma normal
+
+<a id="final-model"></a>
+### Modelo final
+
+<a id="data-dictionary"></a>
+### Dicionário de dados
 
 <a id="physical-model"></a>
 ## Modelo físico
