@@ -72,7 +72,6 @@ Em fim, isso e muitas outras melhorias no desenvolvimento e no produto final ser
 ## Metodologias usadas
 
 - Kanbam
-- Scrum
 - Prototipagem
 
 <a id="project-objectives"></a>
@@ -90,15 +89,16 @@ Em fim, isso e muitas outras melhorias no desenvolvimento e no produto final ser
 ## Objetivos específicos
 
 1. Desenvolver minhas habilidades de planejamento dos processos de desenvolvimento de softwares
-2. Aprender a trabalhar com ferramentas como Kanbam e, até certo ponto, com os conceitos do Scrum e de prototipagem
+2. Aprender a trabalhar com ferramentas como Kanbam e, até certo ponto, com os conceitos de prototipagem
 3. Entender na prática todo o processo de modelagem de dados, indo desde a modelagem conceitual (MER e DER), passando pelo modelo lógico até o modelo físico onde serão concretizados a criação de todas as tabelas do banco
 4. Melhorar e entender melhor o meu processo criativo para a criação da paleta de cores, tipografia, logo e distribuição de conteúdos e prototipação de layout com wireframes
 5. Adquirir maior pensamento crítico na hora de criar e planejar o modelo de navegação do usuário dentro do software
 6. Aprender a utilizar novas ferramentas, como o Sequelize e a sua integração com o MySQL e o mysql2 para criação de querys SQL
-7. Aprender a criar documentação com o Swagger para a API feita com o Express
+7. Aprender a criar documentação com o Swagger para a API feita com o Express e, futuramente, com o Prisma
 8. Melhorar meus padrões de commit de código para maior organização e entendimento das diferentes versões do software
 9. Desenvolver maior habilidade com manipulação de criptografia de dados, LGPD e Lei Brasileira de Inclusão da Pessoa com Deficiência (LBIPD)
 10. Aprender a integrar o plugin VLibre ao software
+11. Desenvolver melhores padrões de testes unitários, de integração e E2E (End-to-End) e testes diretos as restrições do banco de dados através do próprio SQL
 
 <a id="project-requirements"></a>
 
@@ -166,6 +166,8 @@ Em fim, isso e muitas outras melhorias no desenvolvimento e no produto final ser
    [![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)](https://dev.mysql.com/doc/)
    [![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/docs)
    [![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)](https://nodemon.io/)
+[![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)](https://jestjs.io/docs/getting-started)
+[![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)](https://docs.cypress.io)
 
 2. Pretende-se, futuramente, migrar o software para as seguintes tecnologias:
 
@@ -178,6 +180,7 @@ Em fim, isso e muitas outras melhorias no desenvolvimento e no produto final ser
    [![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)](https://dev.mysql.com/doc/)
    [![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/docs)
    [![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)](https://nodemon.io/)
+[![Jasmine](https://img.shields.io/badge/jasmine-%238A4182.svg?style=for-the-badge&logo=jasmine&logoColor=white)](https://jasmine.github.io/)
 
 <a id="standard-requirements"></a>
 
@@ -219,17 +222,19 @@ O software irá se comunicar com
 
    - Cadastro no sistema
    - Ao se cadastrar, devem ficar armazenados os seguintes dados: data e hora do cadastro e cpf de quem se cadastrou
-   - Ao se cadastrar, a pessoa se torna, automaticamente, um usuário do sistema
+   - Ao se cadastrar a pessoa se torna, automaticamente, um usuário do sistema
+   - Uma pessoa pode cadastrar apenas 1 usuário
 
 3. Um usuário deve possuir:
 
    - Comprovante de renda
    - E-mail exclusivo
-   - Uma única conta bancária
+   - Uma ou nenhuma conta bancária
 
 4. Um usuário pode fazer:
 
-   - Movimentações bancárias
+   - Transferência de valores monetários para outros usuários
+   - Sacar ou depositar valores monetários na sua própria conta
 
 5. Toda conta bancária deve possuir:
 
@@ -237,8 +242,9 @@ O software irá se comunicar com
    - Agência
    - Saldo
    - Cheque especial
-   - Toda conta pode ser de um dos três tipos: corrente, salário ou poupança
+   - Toda conta pode ser de um dos três tipos: corrente, salário ou poupança ou até mesmo um conjunto de um ou mais tipos de conta
    - Cada tipo de conta deve ter um identificador que a represente
+   - Uma conta pode ter um usuário associado e também pode ser movimentada por meio de saques e depósitos também por apenas um usuário
 
 6. Toda transação deve ficar armazenada (formando um histórico de cada usuário) e conter as seguintes informações:
 
