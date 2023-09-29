@@ -241,12 +241,13 @@ O software irá se comunicar com
    - Número de conta exclusivo
    - Agência
    - Saldo
-   - Cheque especial
    - Toda conta pode ser de um dos três tipos: corrente, salário ou poupança ou até mesmo um conjunto de um ou mais tipos de conta
    - Cada tipo de conta deve ter um identificador que a represente
    - Uma conta pode ter um usuário associado e também pode ser movimentada por meio de saques e depósitos também por apenas um usuário
 
-6. Toda transação deve ficar armazenada (formando um histórico de cada usuário) e conter as seguintes informações:
+6. A conta corrente, além do identificador, deve possuir o cheque especial
+
+7. Toda transação deve ficar armazenada (formando um histórico de cada usuário) e conter as seguintes informações:
 
    - Usuário que realizou a movimentação
    - Usuário que recebeu a movimentação caso exista
